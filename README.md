@@ -2,7 +2,7 @@
 
 <h3> <a href="http://mix.csscoder.pro/" target="_blank">MIX.CSSCODER.PRO</a> </h3>
 
-Hey guys! My name is Aleksandr. Already more than ten years, I help to developer teams and individual people to create sites. My specialization is front-end development. And now, I want to share the mixins/functions collection. Some mixins I coded myself, some I upgraded, some just copy.  I hope the solutions will be helpful to you.
+Mixins/functions collection.
 
 ## Installation
 
@@ -12,5 +12,3 @@ For using mixins, <a href="https://raw.githubusercontent.com/csscoderRU/scss-mix
 // It can be looks like this
 @import "_csscoder-lib.scss";
 ```
-
-After that, you can use my collection of mixins and functions. About each, you can read In the relevant sections.
