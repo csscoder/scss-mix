@@ -1,0 +1,20 @@
+@import "../../../src/csscoder-lib/functions/functions";
+
+.t1 {
+  line-height: _precision-round(1.33333333333, 4);
+}
+.t2 {
+  line-height: _precision-round(1.77777777777, 4);
+}
+.t3 {
+  line-height: _precision-round(1.999999999999);
+}
+.t4 {
+  line-height: _precision-round(1.666666666666);
+}
+.t5 {
+  line-height: _precision-round(1.666666666666, 6);
+}
+.t6 {
+  line-height: _precision-round(132.666666666666, 6);
+}

@@ -1,0 +1,51 @@
+@import "../../../src/csscoder-lib/functions/functions";
+@import "../../../src/csscoder-lib/mixins/media_queries";
+
+///* Media queries */
+$ss-media-type: 'only screen' !default;
+$ss-media-breakpoints: (
+  xs: 480px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1600px
+) !default;
+
+
+.block1 {
+  display: block;
+
+  @include mq(sm) {
+    display: none;
+  }
+}
+
+.block2 {
+  display: block;
+
+  @include mq-less(md) {
+    display: flex;
+  }
+}
+
+
+.block3 {
+  display: block;
+
+  @include mq-only(lg) {
+    display: none;
+  }
+}
+
+.block4 {
+  display: block;
+
+  @include mq-range(lg, sm) {
+    display: none;
+  }
+
+  @include mq-range(lg, xl) {
+    display: flex;
+  }
+}

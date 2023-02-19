@@ -1,0 +1,10 @@
+@import "../../../src/csscoder-lib/functions/functions";
+$em-base-font-size: 16px;
+
+.t1 {
+  line-height: em(16);
+}
+
+.t2 {
+  line-height: em(16, 10);
+}

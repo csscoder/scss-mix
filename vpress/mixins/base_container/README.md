@@ -51,32 +51,32 @@ $ss-media-breakpoints: (
 }
 @media (min-width: 480px) {
   .container {
-    max-width: 450px;
+    max-width: 420px;
   }
 }
 @media (min-width: 576px) {
   .container {
-    max-width: 546px;
+    max-width: 516px;
   }
 }
 @media (min-width: 768px) {
   .container {
-    max-width: 738px;
+    max-width: 708px;
   }
 }
 @media (min-width: 992px) {
   .container {
-    max-width: 962px;
+    max-width: 932px;
   }
 }
 @media (min-width: 1200px) {
   .container {
-    max-width: 1170px;
+    max-width: 1140px;
   }
 }
 @media (min-width: 1600px) {
   .container {
-    max-width: 1570px;
+    max-width: 1540px;
   }
 }
 ```
@@ -99,17 +99,17 @@ You can use variants adaptive + responsive
 }
 @media (min-width: 992px) {
   .container {
-    max-width: 962px;
+    max-width: 932px;
   }
 }
 @media (min-width: 1200px) {
   .container {
-    max-width: 1170px;
+    max-width: 1140px;
   }
 }
 @media (min-width: 1600px) {
   .container {
-    max-width: 1570px;
+    max-width: 1540px;
   }
 }
 ```
@@ -117,7 +117,7 @@ You can use variants adaptive + responsive
 ```scss
 // End breakpoint for responsive 'lg', fix max width for content box
 .container {
-  @include container(lg, true);
+  @include container(lg, xl);
 }
 
 // CSS result
@@ -130,7 +130,7 @@ You can use variants adaptive + responsive
 }
 @media (min-width: 992px) {
   .container {
-    max-width: 962px;
+    max-width: 932px;
   }
 }
 ```

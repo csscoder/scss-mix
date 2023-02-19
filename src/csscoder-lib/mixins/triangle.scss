@@ -18,15 +18,9 @@
 //  @include triangle(right, 20px 10px 5px, $color: #ff28ca, $before: true); //weird! three different border sizes makes 10px high and 25px wide
 //}
 
-@mixin ui_triangle($direction: down, $size: 16px, $color: #20ba5b){
-  @include triangle_helper($direction, $size, $color, false);
-}
+///* triangle */
+@mixin triangle($direction: down, $size: 30px, $color: #20ba5b, $isEM: null, $baseFontSize: $ss-base-font-size){
 
-@mixin ui_triangle_em($direction: down, $size: 16px, $color: #20ba5b){
-  @include triangle_helper($direction, $size, $color, true);
-}
-
-@mixin triangle_helper($direction, $size, $color,$isEM: false ){
   $w: null;
   $h: null;
   $c: null;
@@ -37,7 +31,7 @@
     $index: index(($size), ($item));
     $value: _strip-unit($item)*1px;
     @if $isEM {
-      $value: em($value);
+      $value: _precision-round(_strip-unit($value) / _strip-unit($baseFontSize))*1em;
     }
     @if($index == 1) {
       $w: $value;
@@ -57,8 +51,8 @@
   $wHelper2: $c;
 
   @if ($lengthSizeProps < 3) {
-    $wHelper: _precision_round($w/2, 4);
-    $wHelper2: _precision_round($w/2, 4);
+    $wHelper: $w/2;
+    $wHelper2: $w/2;
   } @else {
     $wHelper: $wHelper - $wHelper2;
   }

@@ -5,8 +5,8 @@
   width: 100%;
   margin-right: auto;
   margin-left: auto;
-  padding-right: $ss-layout-gutter/2;
-  padding-left: $ss-layout-gutter/2;
+  padding-right: $ss-layout-gutter;
+  padding-left: $ss-layout-gutter;
 }
 
 @mixin container($break1:null, $break2:null) {

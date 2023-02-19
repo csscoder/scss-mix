@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 ///* Raise a number to a power */
 ///***********************************************/
 @function _pow($x, $n) {
@@ -12,7 +14,7 @@
 ///***********************************************/
 @function _strip-unit($value) {
   @if type-of($value) == 'number' {
-    @return $value / ($value * 0 + 1);
+    @return math.div($value , ($value * 0 + 1));
   }
 
   @return $value;
@@ -23,13 +25,13 @@
 @function _precision-round($float, $digits: 4) {
   $pow: _pow(10, $digits);
 
-  @return round($float * $pow) / $pow;
+  @return math.div(round($float * $pow), $pow)
 }
 
 ///* PX to EM function */
 ///***********************************************/
 @function _convert-to-em($px, $base) {
-  @return _precision-round(_strip-unit($px) / _strip-unit($base) * 1em);
+  @return _precision-round(math.div(_strip-unit($px), _strip-unit($base)) * 1em);
 }
 
 @function em($value, $base: $em-base-font-size) {

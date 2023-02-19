@@ -1,0 +1,32 @@
+@import "../../../src/csscoder-lib/functions/functions";
+@import "../../../src/csscoder-lib/mixins/base_container";
+
+///* columns and container */
+$ss-layout-gutter: 30px !default;
+
+///* Media queries */
+$ss-media-type: 'only screen' !default;
+$ss-media-breakpoints: (
+  xs: 480px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1600px
+) !default;
+
+.container1 {
+  @include container-fluid;
+}
+
+.container2 {
+  @include container;
+}
+
+.container3 {
+  @include container(lg);
+}
+
+.container4 {
+  @include container(lg, xl);
+}

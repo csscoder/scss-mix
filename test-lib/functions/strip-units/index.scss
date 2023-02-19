@@ -1,0 +1,16 @@
+@import "../../../src/csscoder-lib/csscoder-lib";
+.test {
+  line-height: _strip-unit(1.4px);
+}
+
+.test2 {
+  line-height: _strip-unit(14%);
+}
+
+.test3 {
+  line-height: _strip-unit(14em);
+}
+
+.test4 {
+  line-height: _strip-unit(14rem);
+}
