@@ -43,7 +43,6 @@ $ss-base-font-size: 16px !default;
 $ss-start-step-font-scale: xs !default;
 $ss-end-step-font-scale: xl !default;
 
-
 ///* Raise a number to a power */
 ///***********************************************/
 @function _pow($x, $n) {
@@ -69,13 +68,13 @@ $ss-end-step-font-scale: xl !default;
 @function _precision-round($float, $digits: 4) {
   $pow: _pow(10, $digits);
 
-  @return round($float * $pow) / $pow;
+  @return math.div(round($float * $pow), $pow)
 }
 
 ///* PX to EM function */
 ///***********************************************/
 @function _convert-to-em($px, $base) {
-  @return _precision-round(_strip-unit($px) / _strip-unit($base) * 1em);
+  @return _precision-round(math.div(_strip-unit($px), _strip-unit($base)) * 1em);
 }
 
 @function em($value, $base: $em-base-font-size) {
@@ -91,6 +90,7 @@ $ss-end-step-font-scale: xl !default;
 ///***********************************************/
 
 ///* media queries breakpoints */
+///***********************************************/
 @mixin mq($media) {
   @if map-has-key($ss_media_breakpoints, $media) {
     @media #{$ss_media_type} and (min-width: map-get($ss_media_breakpoints, $media)) {
@@ -99,7 +99,7 @@ $ss-end-step-font-scale: xl !default;
   }
 }
 
-@mixin mq-less($media) {
+@mixin mq_less($media) {
   @if map-has-key($ss_media_breakpoints, $media) {
     @media #{$ss_media_type} and (max-width: map-get($ss_media_breakpoints, $media) - 1px) {
       @content;
@@ -107,7 +107,7 @@ $ss-end-step-font-scale: xl !default;
   }
 }
 
-@mixin mq-only($media) {
+@mixin mq_only($media) {
   $steps_list: map-keys($ss_media_breakpoints);
   @if map-has-key($ss_media_breakpoints, $media) {
     $i: index(($ss_media_breakpoints), ($media map-get($ss_media_breakpoints, $media)));
@@ -131,7 +131,7 @@ $ss-end-step-font-scale: xl !default;
   }
 }
 
-@mixin mq-range($media_start: '', $media_end: '') {
+@mixin mq_range($media_start: '', $media_end: '') {
   $steps_list: map-keys($ss_media_breakpoints);
 
   @if if(map-has-key($ss_media_breakpoints, $media_start) == true and map-has-key($ss_media_breakpoints, $media_end) == true, true, false) {
@@ -158,8 +158,8 @@ $ss-end-step-font-scale: xl !default;
   width: 100%;
   margin-right: auto;
   margin-left: auto;
-  padding-right: math.div($ss-layout-gutter, 2);
-  padding-left: math.div($ss-layout-gutter, 2);
+  padding-right: $ss-layout-gutter;
+  padding-left: $ss-layout-gutter;
 }
 
 @mixin container($break1:null, $break2:null) {
@@ -204,9 +204,9 @@ $ss-end-step-font-scale: xl !default;
 ///* columns */
 @mixin col($col, $length_line:1, $gutter: $ss-layout-gutter, $size: $ss-columns-size ) {
   $_gutter: _strip-unit($gutter);
-  $s1: _precision_round($col / $size, 7);
-  $s2: _precision_round($s1 * 100);
-  $s3: _precision_round($_gutter - $_gutter * $s1);
+  $s1: _precision_round(math.div($col, $size), 7);
+  $s2: $s1 * 100;
+  $s3: _precision_round($_gutter - $_gutter * $s1, 5);
   $unit: unit($gutter);
   @if $unit == '' {
     $unit: 'px';
@@ -233,9 +233,9 @@ $ss-end-step-font-scale: xl !default;
 
 @mixin col-offset($col, $gutter: $ss-layout-gutter, $size: $ss-columns-size ) {
   $_gutter: _strip-unit($gutter);
-  $s1: _precision_round($col / $size, 7);
-  $s2: _precision_round($s1 * 100);
-  $s3: _precision_round($_gutter * $s1);
+  $s1: _precision_round(math.div($col, $size), 7);
+  $s2: $s1 * 100;
+  $s3: _precision_round($_gutter * $s1, 5);
   $unit: unit($gutter);
   @if $unit == '' {
     $unit: px;
